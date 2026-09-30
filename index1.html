@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071525">
+<title>NIHAARIKA R.D. | Portfolio</title>
+<style>
+:root {
+  --bg: #071525;
+  --panel: #10243a;
+  --text: #edf5ff;
+  --muted: #a3b5c9;
+  --accent: #62e6dc;
+  --line: rgba(255,255,255,.12);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  line-height: 1.65;
+  transition: background .35s, color .35s;
+}
+body.ai-mode {
+  --accent: #a68aff;
+  --bg: #100d25;
+  --panel: #1c1938;
+}
+body.ic-mode {
+  --accent: #62e6dc;
+  --bg: #071925;
+  --panel: #102b3c;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+.container { width: min(1120px, 90%); margin: auto; }
+header {
+  position: sticky; top: 0; z-index: 10;
+  background: rgba(7,21,37,.92);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+nav {
+  min-height: 70px;
+  display: flex; align-items: center;
+  justify-content: space-between; gap: 20px;
+}
+.logo { font-weight: 850; letter-spacing: .06em; }
+.logo span { color: var(--accent); }
+.navlinks { display: flex; gap: 22px; flex-wrap: wrap; }
+.navlinks a { font-size: 13px; color: var(--muted); }
+.navlinks a:hover { color: var(--accent); }
+.hero {
+  min-height: 510px;
+  display: grid; grid-template-columns: 1.2fr .8fr;
+  gap: 35px; align-items: center; padding: 75px 0;
+}
+.eyebrow {
+  color: var(--accent); font-size: 11px;
+  font-weight: 800; letter-spacing: .19em;
+  text-transform: uppercase;
+}
+h1 {
+  margin: 18px 0;
+  font-size: clamp(32px, 6vw, 69px);
+  line-height: 1.12;
+  letter-spacing: -.055em;
+  font-weight: 900;
+  white-space: nowrap;
+}
+.gradient {
+  background: linear-gradient(90deg, var(--accent), #a6caff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.hero p { max-width: 620px; color: var(--muted); font-size: 16px; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 25px; }
+.btn {
+  display: inline-block; padding: 11px 17px;
+  border-radius: 11px; border: 1px solid var(--line);
+  font-size: 13px; font-weight: 750;
+}
+.btn.primary { background: var(--accent); color: #071525; border-color: transparent; }
+.btn:hover { transform: translateY(-2px); }
+.visual {
+  aspect-ratio: 1; max-width: 390px; width: 100%;
+  margin: auto; border-radius: 50%;
+  display: grid; place-items: center; position: relative;
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 16%, transparent), transparent 68%);
+}
+.visual:before, .visual:after {
+  content: ""; position: absolute; inset: 12%;
+  border: 1px dashed color-mix(in srgb, var(--accent) 40%, transparent);
+  border-radius: 50%; transform: rotate(35deg) scaleX(.7);
+}
+.visual:after { inset: 25%; transform: rotate(-35deg) scaleX(.8); }
+.core {
+  width: 155px; height: 155px; border-radius: 35px;
+  display: grid; place-items: center; text-align: center;
+  background: var(--panel); border: 1px solid var(--accent);
+  box-shadow: 0 0 55px color-mix(in srgb, var(--accent) 18%, transparent);
+  z-index: 1;
+}
+.core strong { display: block; font-size: 32px; line-height: 1.2; }
+.core small { color: var(--accent); font-size: 10px; letter-spacing: .13em; }
+.orbit-label {
+  position: absolute; z-index: 2; padding: 8px 11px;
+  border: 1px solid var(--line); border-radius: 10px;
+  background: var(--panel); font-size: 11px; font-weight: 700;
+}
+.label1 { top: 12%; left: 0; }
+.label2 { top: 18%; right: -3%; }
+.label3 { bottom: 17%; right: -1%; }
+.label4 { bottom: 9%; left: 6%; }
+section { padding: 65px 0; border-top: 1px solid var(--line); }
+.section-head { margin-bottom: 25px; }
+h2 { font-size: clamp(25px, 4vw, 37px); line-height: 1.2; letter-spacing: -.04em; margin: 6px 0; }
+.section-desc { color: var(--muted); font-size: 13px; max-width: 680px; }
+.switch-wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 18px; flex-wrap: wrap; margin: 22px 0;
+}
+.switch {
+  display: inline-flex; gap: 5px; padding: 5px;
+  border: 1px solid var(--line); border-radius: 999px;
+  background: rgba(0,0,0,.2);
+}
+.switch button {
+  border: 0; border-radius: 999px; padding: 10px 15px;
+  color: var(--muted); background: transparent;
+  font-size: 11px; font-weight: 800; letter-spacing: .04em;
+}
+.switch button[aria-pressed="true"] {
+  background: var(--accent); color: #071525;
+}
+.profile {
+  padding: 28px; border-radius: 20px;
+  background: var(--panel); border: 1px solid var(--line);
+  transition: .3s;
+}
+.profile h3 { font-size: 24px; margin: 8px 0; }
+.profile p { color: var(--muted); font-size: 14px; }
+.profile[hidden] { display: none; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.tag {
+  border: 1px solid var(--line); border-radius: 999px;
+  padding: 5px 10px; font-size: 11px; color: var(--text);
+}
+.grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+.card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: 17px; padding: 21px;
+}
+.card h3 { font-size: 15px; margin: 0 0 7px; }
+.card p { color: var(--muted); font-size: 12px; margin: 0; }
+.icon { color: var(--accent); font-size: 21px; margin-bottom: 8px; }
+.project {
+  border: 1px solid color-mix(in srgb, var(--accent) 40%, transparent);
+  background: linear-gradient(135deg, var(--panel), transparent);
+  border-radius: 20px; padding: 27px;
+}
+.project h3 { font-size: 23px; margin: 8px 0; }
+.project p { color: var(--muted); font-size: 13px; max-width: 850px; }
+.project-points { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-top: 20px; }
+.point { padding: 13px; background: rgba(255,255,255,.035); border: 1px solid var(--line); border-radius: 12px; font-size: 11px; }
+.point b { display: block; color: var(--accent); margin-bottom: 4px; }
+.timeline { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.meta { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+ul { padding-left: 18px; color: var(--muted); font-size: 12px; }
+.strengths { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+.strength { text-align: center; padding: 18px 10px; }
+.strength .icon { font-size: 25px; }
+.strength b { display: block; font-size: 12px; }
+.strength small { color: var(--muted); font-size: 10px; }
+.contact {
+  display: flex; justify-content: space-between; align-items: center;
+  gap: 20px; flex-wrap: wrap; padding: 25px;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 20px;
+}
+.contact-links { display: flex; flex-wrap: wrap; gap: 9px; }
+.contact-links a { border: 1px solid var(--line); padding: 8px 11px; border-radius: 9px; font-size: 11px; }
+footer { padding: 25px 0; color: var(--muted); font-size: 10px; }
+@media(max-width:760px) {
+  .hero { grid-template-columns: 1fr; padding: 55px 0; }
+  .visual { max-width: 320px; }
+  .grid { grid-template-columns: repeat(2,1fr); }
+  .project-points { grid-template-columns: repeat(2,1fr); }
+}
+@media(max-width:540px) {
+  .navlinks { gap: 10px; }
+  .navlinks a { font-size: 11px; }
+  h1 { font-size: clamp(28px, 7.5vw, 40px); }
+  .grid, .timeline, .strengths { grid-template-columns: 1fr 1fr; }
+  .profile, .project { padding: 20px; }
+  .switch button { padding: 9px 10px; font-size: 9px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  *, *:before, *:after { scroll-behavior: auto !important; transition: none !important; }
+}
+</style>
+</head>
+<body class="ai-mode">
+<header>
+  <nav class="container">
+    <a class="logo" href="#home">N<span>↗</span> NIHAARIKA R.D.</a>
+    <div class="navlinks">
+      <a href="#profiles">Profiles</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Project</a>
+      <a href="#journey">Journey</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main class="container" id="home">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Third-year B.E. student · Chennai, India</div>
+      <h1>NIHAARIKA R.D.</h1>
+      <p>
+        Electrical Instrumentation and Control Engineering student
+        exploring the intersection of artificial intelligence,
+        software, sensors, and intelligent systems.
+        I enjoy learning new technologies and transforming ideas
+        into practical, human-centered solutions.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#projects">Explore my work ↗</a>
+        <a class="btn" href="#contact">Connect with me</a>
+      </div>
+      <div class="tags">
+        <span class="tag">CGPA: 8.54</span>
+        <span class="tag">AI & Software</span>
+        <span class="tag">Instrumentation & Control</span>
+      </div>
+    </div>
+    <div class="visual" aria-label="AI and instrumentation concept">
+      <div class="core">
+        <div><strong>AI × I&C</strong><small>SENSE · THINK · ACT</small></div>
+      </div>
+      <span class="orbit-label label1">AI & Data</span>
+      <span class="orbit-label label2">Sensors</span>
+      <span class="orbit-label label3">Control</span>
+      <span class="orbit-label label4">Software</span>
+    </div>
+  </div>
+
+  <section id="profiles">
+    <div class="section-head">
+      <div class="eyebrow">My dual profile</div>
+      <h2>Two disciplines. One engineering mindset.</h2>
+      <p class="section-desc">
+        Explore my two areas of interest using the profile switch.
+        Each view has its own focus, accent theme, and skill highlights.
+      </p>
+    </div>
+    <div class="switch-wrap">
+      <div class="switch" role="group" aria-label="Switch professional profile">
+        <button id="aiButton" aria-pressed="true" type="button">✦ AI & SOFTWARE</button>
+        <button id="icButton" aria-pressed="false" type="button">⌁ INSTRUMENTATION & CONTROL</button>
+      </div>
+      <span class="eyebrow" id="profileLabel">01 / AI & SOFTWARE</span>
+    </div>
+
+    <article class="profile" id="aiProfile">
+      <div class="eyebrow">Profile 01 · Software intelligence</div>
+      <h3>AI & Software</h3>
+      <p>
+        I am interested in software development, artificial intelligence,
+        programming, and data-driven applications. I enjoy exploring
+        how intelligent algorithms can interpret information, solve
+        problems, and support real-world decision-making.
+      </p>
+      <div class="tags">
+        <span class="tag">Python</span>
+        <span class="tag">Java</span>
+        <span class="tag">C</span>
+        <span class="tag">AI / ML foundations</span>
+        <span class="tag">Data Analytics</span>
+        <span class="tag">Power BI</span>
+        <span class="tag">Problem Solving</span>
+      </div>
+    </article>
+
+    <article class="profile" id="icProfile" hidden>
+      <div class="eyebrow">Profile 02 · Intelligent physical systems</div>
+      <h3>Instrumentation & Control</h3>
+      <p>
+        My engineering foundation is in electrical instrumentation
+        and control. I am interested in sensors, measurement,
+        industrial processes, embedded systems, and control concepts
+        that connect software with the physical world.
+      </p>
+      <div class="tags">
+        <span class="tag">Industrial Instrumentation</span>
+        <span class="tag">Basic Control Systems</span>
+        <span class="tag">Digital System Design</span>
+        <span class="tag">Arduino Basics</span>
+        <span class="tag">Sensors</span>
+        <span class="tag">Tinkercad</span>
+        <span class="tag">Xilinx</span>
+        <span class="tag">EasyEDA</span>
+      </div>
+    </article>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <div class="eyebrow">Technical toolkit</div>
+      <h2>Skills & tools</h2>
+      <p class="section-desc">
+        A multidisciplinary skill set spanning programming,
+        engineering fundamentals, and software tools.
+      </p>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">⌘</div>
+        <h3>Programming</h3>
+        <p>Python<br>Java<br>C</p>
+      </div>
+      <div class="card">
+        <div class="icon">⌁</div>
+        <h3>Instrumentation</h3>
+        <p>Industrial instrumentation<br>Measurement fundamentals<br>Sensor basics</p>
+      </div>
+      <div class="card">
+        <div class="icon">⟳</div>
+        <h3>Control & Embedded</h3>
+        <p>Basic control systems<br>Arduino fundamentals<br>Digital system design</p>
+      </div>
+      <div class="card">
+        <div class="icon">▧</div>
+        <h3>Software Tools</h3>
+        <p>Xilinx<br>Tinkercad<br>EasyEDA<br>Power BI</p>
+      </div>
+      <div class="card">
+        <div class="icon">✧</div>
+        <h3>AI & Data Interests</h3>
+        <p>AI and machine learning foundations<br>Data analytics<br>Computer vision exploration</p>
+      </div>
+      <div class="card">
+        <div class="icon">◎</div>
+        <h3>Professional Skills</h3>
+        <p>Quick learner<br>Teamwork<br>Problem solving<br>Time management</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <div class="eyebrow">Featured project</div>
+      <h2>Technology with real-world purpose</h2>
+    </div>
+    <article class="project">
+      <div class="eyebrow">AI · IoT · Geofencing · LoRaWAN</div>
+      <h3>I-GAARD</h3>
+      <p><strong>Intelligent AI-Driven Geofence Animal Detection and Real-Time Alert System</strong></p>
+      <p>
+        I-GAARD is an AI-based wildlife monitoring and alert-system
+        concept designed to help reduce human–wildlife conflict in
+        forest-edge areas. It combines AI-enabled camera monitoring,
+        IoT sensors, geofencing, long-range communication, and
+        real-time alerts to support villagers, tourists, and forest
+        authorities.
+      </p>
+      <div class="project-points">
+        <div class="point"><b>01 · Detect</b>AI-enabled camera monitoring and sensor inputs.</div>
+        <div class="point"><b>02 · Locate</b>Geofencing to monitor virtual boundaries.</div>
+        <div class="point"><b>03 · Connect</b>LoRaWAN for communication in remote areas.</div>
+        <div class="point"><b>04 · Alert</b>Timely notifications for community safety.</div>
+      </div>
+      <div class="tags">
+        <span class="tag">AI</span>
+        <span class="tag">IoT</span>
+        <span class="tag">Solar-powered concept</span>
+        <span class="tag">Wildlife safety</span>
+        <span class="tag">SDG 9</span>
+        <span class="tag">SDG 12</span>
+        <span class="tag">SDG 15</span>
+      </div>
+    </article>
+  </section>
+
+  <section id="journey">
+    <div class="section-head">
+      <div class="eyebrow">Education & experience</div>
+      <h2>My learning journey</h2>
+    </div>
+    <div class="timeline">
+      <article class="card">
+        <div class="meta">Undergraduate · Present</div>
+        <h3>B.E. Electrical Instrumentation and Control Engineering</h3>
+        <p>Sri Sairam Engineering College, Chennai</p>
+        <ul>
+          <li>Currently in 3rd year</li>
+          <li>CGPA: 8.54</li>
+          <li>Higher Secondary: 89%</li>
+          <li>Secondary: 94.6%</li>
+        </ul>
+      </article>
+      <article class="card">
+        <div class="meta">15-day internship</div>
+        <h3>Fuji Electric Private Limited</h3>
+        <p>
+          Gained exposure to industrial operations, instrumentation
+          processes, and real-time working environments. Developed
+          a better understanding of industry practices, teamwork,
+          and problem-solving.
+        </p>
+      </article>
+      <article class="card">
+        <div class="meta">15-day internship</div>
+        <h3>Syrma SGS Technology</h3>
+        <p>
+          Gained industry exposure and an opportunity to observe
+          professional operations, technical workflows, and
+          workplace practices.
+        </p>
+      </article>
+      <div class="card">
+    <div class="meta">Industry exposure</div>
+    <h3>15-day Internship · Syrma SGS Technology</h3>
+    <p>
+        Gained introductory exposure to electronics manufacturing
+        and production workflows, including quality-focused
+        processes, workplace safety, and coordination across
+        technical teams. Developed a better understanding of
+        how engineering practices support reliable electronic
+        products and strengthened teamwork and problem-solving
+        skills through industry exposure.
+    </p>
+      <article class="card">
+        <div class="meta">Academic project</div>
+        <h3>Hospital Management Software</h3>
+        <p>
+          Developed a school-level software project using Python
+          and Tinkercad, gaining early experience in programming
+          and practical project development.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="certifications">
+    <div class="section-head">
+      <div class="eyebrow">Continuous learning</div>
+      <h2>Certifications</h2>
+    </div>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">✧</div>
+        <h3>NPTEL</h3>
+        <p>United Nations Sustainable Development Goals</p>
+      </div>
+      <div class="card">
+        <div class="icon">⌘</div>
+        <h3>NPTEL</h3>
+        <p>The Joy of Computing using Python</p>
+      </div>
+      <div class="card">
+        <div class="icon">▤</div>
+        <h3>NPTEL</h3>
+        <p>Data Analytics with Python</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="strengths">
+    <div class="section-head">
+      <div class="eyebrow">Beyond technology</div>
+      <h2>Strengths & achievements</h2>
+    </div>
+    <div class="grid strengths">
+      <div class="card strength">
+        <div class="icon">✦</div>
+        <b>Quick Learner</b>
+        <small>Curious and adaptable</small>
+      </div>
+      <div class="card strength">
+        <div class="icon">♧</div>
+        <b>Team Player</b>
+        <small>Collaborative mindset</small>
+      </div>
+      <div class="card strength">
+        <div class="icon">◎</div>
+        <b>Problem Solver</b>
+        <small>Analytical approach</small>
+      </div>
+      <div class="card strength">
+        <div class="icon">◷</div>
+        <b>Time Management</b>
+        <small>Organized and focused</small>
+      </div>
+      <div class="card">
+        <div class="meta">Achievement</div>
+        <h3>Overall Champion</h3>
+        <p>Inter-college speech competition, “Play with Words.”</p>
+      </div>
+      <div class="card">
+        <div class="meta">Extracurricular</div>
+        <h3>Sports Participation</h3>
+        <p>Earned several sports-event prizes through 12th grade.</p>
+      </div>
+      <div class="card">
+        <div class="meta">Languages</div>
+        <h3>Communication</h3>
+        <p>English · Hindi · Tamil · Kannada</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact">
+      <div>
+        <div class="eyebrow">Let's connect</div>
+        <h2>Curious minds build better systems.</h2>
+        <p class="section-desc">
+          Open to internships, learning opportunities,
+          and collaborative engineering projects.
+        </p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:nihaika1106@gmail.com">✉ Email</a>
+        <a href="https://www.linkedin.com/in/nihaara-rd"
+           target="_blank" rel="noopener noreferrer">in LinkedIn</a>
+        <a href="tel:892578247">☎ Phone</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="container">
+  © <span id="year"></span> NIHAARIKA R.D. · AI × Instrumentation × Control
+</footer>
+
+<script>
+const aiButton = document.getElementById("aiButton");
+const icButton = document.getElementById("icButton");
+const aiProfile = document.getElementById("aiProfile");
+const icProfile = document.getElementById("icProfile");
+const profileLabel = document.getElementById("profileLabel");
+
+function setProfile(mode) {
+  const isAI = mode === "ai";
+
+  document.body.classList.toggle("ai-mode", isAI);
+  document.body.classList.toggle("ic-mode", !isAI);
+
+  aiProfile.hidden = !isAI;
+  icProfile.hidden = isAI;
+
+  aiButton.setAttribute("aria-pressed", String(isAI));
+  icButton.setAttribute("aria-pressed", String(!isAI));
+
+  profileLabel.textContent = isAI
+    ? "01 / AI & SOFTWARE"
+    : "02 / INSTRUMENTATION & CONTROL";
+}
+
+aiButton.addEventListener("click", () => setProfile("ai"));
+icButton.addEventListener("click", () => setProfile("ic"));
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+setProfile("ai");
+</script>
+</body>
+</html>
